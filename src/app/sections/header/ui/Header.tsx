@@ -1,58 +1,44 @@
 import cls from './Header.module.scss';
-export const Header: React.FC = () => {
-    const handleClick = (id: string): void => {
-        alert(id);
-    };
+import { Container } from 'app/shared/container';
+import { Navbar } from 'app/sections/header/navbar';
+import Github from 'app/assets/icons/github.svg';
+import Telegram from 'app/assets/icons/telegram.svg';
+import Linkedin from 'app/assets/icons/linkedin.svg';
+import cn from 'classnames';
+import React from 'react';
 
+export const Header: React.FC = () => {
     return (
         <header className={cls.Header}>
-            <ul className={cls.list}>
-                <li className={cls.item}>
-                    <button
-                        onClick={() => {
-                            handleClick('home');
-                        }}
+            <Container
+                className={cn('flex', 'row', 'flex-end', 'align-center')}
+            >
+                <Navbar />
+                <div className={cls.icons}>
+                    <a
+                        href='https://github.com/georgy-p'
+                        target='_blank'
+                        rel='noreferrer'
                     >
-                        Главная
-                    </button>
-                </li>
-                <li className={cls.item}>
-                    <button
-                        onClick={() => {
-                            handleClick('about');
-                        }}
+                        <Github className={cls.icon} />
+                    </a>
+                    <a
+                        href='https://t.me/pgeorgy'
+                        target='_blank'
+                        rel='noreferrer'
                     >
-                        Обо мне
-                    </button>
-                </li>
-                <li className={cls.item}>
-                    <button
-                        onClick={() => {
-                            handleClick('stack');
-                        }}
+                        {' '}
+                        <Telegram className={cls.icon} />
+                    </a>
+                    <a
+                        href='https://www.linkedin.com/in/georgy-pigar/'
+                        target='_blank'
+                        rel='noreferrer'
                     >
-                        Стэк
-                    </button>
-                </li>
-                <li className={cls.item}>
-                    <button
-                        onClick={() => {
-                            handleClick('projects');
-                        }}
-                    >
-                        Проекты
-                    </button>
-                </li>
-                <li className={cls.item}>
-                    <button
-                        onClick={() => {
-                            handleClick('contacts');
-                        }}
-                    >
-                        Контакты
-                    </button>
-                </li>
-            </ul>
+                        <Linkedin className={cls.icon} />
+                    </a>
+                </div>
+            </Container>
         </header>
     );
 };
